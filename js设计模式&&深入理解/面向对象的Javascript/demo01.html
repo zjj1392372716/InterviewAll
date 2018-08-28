@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var duck = {
+      duckSinging: function () {
+        console.log('嘎嘎嘎');
+      }
+    }
+
+    var chicken = {
+      duckSinging: function () {
+        console.log('嘎嘎嘎');
+      }
+    }
+
+    var joinArr = [];
+
+    function join(animal) {
+      if (animal && typeof animal.duckSinging === 'function') {
+        joinArr.push(animal);
+        console.log('新加入一个成员');
+      }
+    }
+
+    join(duck);
+    join(chicken);
+  </script>
+</body>
+
+</html>

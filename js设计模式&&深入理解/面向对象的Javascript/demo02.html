@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function makeSound (animal) {
+      animal.sound();
+    }
+
+    function Duck() {
+
+    }
+
+    Duck.prototype.sound = function() {
+      console.log('嘎嘎嘎');
+    }
+
+    var checken = function() {
+
+    }
+
+    checken.prototype.sound = function() {
+      console.log('咕咕咕');
+    }
+
+    makeSound(new Duck());
+    makeSound(new checken());
+    
+
+    var Dog = function() {
+
+    }
+
+    Dog.prototype.sound = function() {
+      console.log('汪汪汪');
+    }
+
+    makeSound(new Dog());
+  </script>
+</body>
+</html>
