@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<title>html5拖拽上传</title>
+	<style media="screen">
+	*{
+		padding: 0px;
+		margin: 0px;
+	}
+	.dragImage_wrapper{
+		width: 500px;
+		height: 400px;
+		border: 1px solid #ddd;
+		margin: 20px 0px 0px 20px;
+		box-sizing: border-box;
+
+	}
+	.dragImage_tip{
+		width: 100%;
+		height: 40px;
+		line-height: 40px;
+		padding: 0px 10px;
+		box-sizing: border-box;
+		border-bottom: 1px solid #e4e3e3;
+		color: #999;
+	}
+	.dragImage_show{
+		width: 100%;
+		height: 360px;
+		padding:  10px;
+		position: relative;
+		box-sizing: border-box;
+	}
+	.dragImage_show input{
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		top: 0px;
+		height: 100%;
+		font-size: 0;
+		display: none;
+	}
+	.dragImage_show .dragImageBox{
+		width: 100%;
+		height: 100%;
+	  box-sizing: border-box;
+	}
+	.img_show_item{
+		width: 30.4%;
+		height: 80px;
+		padding: 8px;
+		display: inline-block;
+		box-sizing: border-box;
+		margin-right: 3%;
+		border: 1px solid #999;
+		border-radius: 4px;
+		margin-bottom: 10px;
+	}
+	.img_show_item:nth-of-type(3n) {
+		margin-right: 0px;
+	}
+	.img_show_item img{
+		width: 100%;
+		height: 100%;
+	}
+	</style>
+</head>
+
+<body>
+	<!-- 拖拽上传 -->
+	<div class="dragImage_wrapper">
+		<p class="dragImage_tip">请把图片拖拽到下方哦</p>
+		<div class="dragImage_show">
+			<input type="file" name="dragImageFile" id="dragImageFile" multiple />
+			<div class="dragImageBox">
+				<!-- 图片插入位置  -->
+			</div>
+		</div>
+	</div>
+
+	<!--  -->
+
+	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+	// 多图拖拽上传
+
+	const dragbox = document.querySelector('.dragImage_wrapper');
+	dragbox.addEventListener('dragover', function (e) {
+			e.preventDefault(); // 必须阻止默认事件
+	}, false);
+	dragbox.addEventListener('drop', function (e) {
+			e.preventDefault(); // 阻止默认事件
+				var files = e.dataTransfer.files; //获取文件
+				console.log(files); // 支持多张拖动上传，所以这里的files是一个file对象类数组
+				// 如果上传图片，可以操作该数组。通过FormData上传
+				appendFile(files, '.dragImageBox') // 预览
+	}, false);
+
+	function appendFile (files, listName) {
+		for( file of files ) {
+			let url = window.URL.createObjectURL(file);
+			let liStr = '<div class="img_show_item">'
+			+'<img src="'+url+'" alt="文件" />'
+			+'</div>';
+			$(listName).append(liStr);
+		}
+	}
+	</script>
+</body>
+
+</html>
