@@ -205,3 +205,7 @@ function appendFile (files, listName) {
 
 
 **可以看出FileReader和URL.createObjectURL都能完美的实现图片的预览，但对于视频的上传，FileReader就不行了，浏览器立马崩溃了。。。，然而URL.createObjectURL方法却完美实现。**
+
+## 详解：怎样实现前端裁剪上传图片功能
+
+[详解：怎样实现前端裁剪上传图片功能](https://zhuanlan.zhihu.com/p/23340867)
