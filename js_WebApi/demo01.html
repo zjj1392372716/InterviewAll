@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul">
+			<li>java</li>
+			<li>c</li>
+			<li>c++</li>
+			<li>python</li>
+		</ul>
+
+		<script type="text/javascript">
+		function bindEvent(elem, type, selector, fn) {
+			// 这样处理，可接收两种调用方式 bindEvent(div1, 'click', 'a', function () {...}) 和 bindEvent(div1, 'click', function () {...}) 这两种
+
+			if(fn == null) {
+				fn = selector;
+				selector = null;
+			}
+
+			elem.addEventListener(type, function(e) {
+				var target
+				if(selector) {
+					// 获取触发事件的元素，即 e.target
+					target = e.target
+					if(target.matches(selector)) {
+						fn.call(target, e);
+					}
+				} else {
+					fn(e);
+				}
+			})
+
+		}
+
+		var div1 = document.getElementById('ul')
+		bindEvent(div1, 'click', 'li', function (e) {
+		    console.log(this.innerHTML)
+		})
+		</script>
+	</body>
+</html>

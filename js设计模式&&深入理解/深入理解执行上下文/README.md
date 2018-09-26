@@ -7,6 +7,8 @@
 
 js有三种代码环境
 
+![](https://i.postimg.cc/0j02LyCh/Screenshot_2018-09-23-14-27-22-17.png)
+
 ```
 global Code  最开始的默认环境
 Function code 代码进入一个函数
@@ -14,6 +16,8 @@ Eval Code  使用eval()执行代码
 ```
 
 **为了表示不同的运行环境，JavaScript中有一个执行上下文（Execution context，EC）的概念。也就是说，当JavaScript代码执行的时候，会进入不同的执行上下文，这些执行上下文就构成了一个执行上下文栈（Execution context stack，ECS）。**
+
+![](https://i.postimg.cc/C5gxPqbj/Screenshot_2018-09-23-14-33-38-34.png)
 
 栗子：
 
@@ -52,6 +56,18 @@ outerFunc()
 当然，除了这三个属性之外，根据实现的需要，Execution Context还可以有一些附加属性。
 
 ![](https://images2015.cnblogs.com/blog/593627/201510/593627-20151025201152849-1821016303.png)
+
+
+> 当开始一个js代码的加载之前会往全局的VO中放入一些变量和方法
+
+![](https://i.postimg.cc/C5gxPqbj/Screenshot_2018-09-23-14-33-38-34.png)
+
+VO === this === global
+
+我们平时直接访问的那些方法，就是存在于VO中的
+
+----------------
+
 
 ### VO & AO
 
@@ -93,6 +109,18 @@ properties-indexes：就是函数的参数值(按参数列表从左到右排列)
 当上面的例子开始执行outerFunc的时候，就会有一个outerFunc的AO被创建：
 
 ![](https://images2015.cnblogs.com/blog/593627/201510/593627-20151025201156317-195051519.png)
+
+![](https://i.postimg.cc/j5hpTwG6/Screenshot_2018-09-23-14-38-23-54.png)
+
+在函数内部，AO（VO）的创建按照上图的顺序来创建。
+
+```
+1 函数参数， 如未传入未undefined
+2 函数声明，发生冲突，直接覆盖
+3 变量声明，发生冲突，忽略掉
+```
+
+---------------
 
 ### 细看Execution Context
 
